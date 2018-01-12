@@ -73,3 +73,6 @@ Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+BattleTank/BattleTank/Content/StarterContent/*
+!BattleTank/BattleTank/Content/StarterContent/Textures/*
