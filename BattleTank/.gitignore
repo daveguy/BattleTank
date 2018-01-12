@@ -74,5 +74,8 @@ Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
-BattleTank/BattleTank/Content/StarterContent/*
-!BattleTank/BattleTank/Content/StarterContent/Textures/*
+Content/StarterContent/*
+!Content/StarterContent/Textures/
+Content/StarterContent/Textures/*
+!Content/StarterContent/Textures/T_Ground_Grass_D.uasset
+!Content/StarterContent/Textures/T_Ground_Gravel_D.uasset
