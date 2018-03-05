@@ -9,6 +9,7 @@
 class UTankBarrel;
 class UTankAimingComponent;
 class UTankTurret;
+class AProjectile;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -22,10 +23,13 @@ public:
 	void AimAt(FVector AimLocation);
 
 	UFUNCTION(BlueprintCallable, Category = setup)
-	void SetBArrelReference(UTankBarrel* barrelToSet);
+	void SetBarrelReference(UTankBarrel* barrelToSet);
 
 	UFUNCTION(BlueprintCallable, Category = setup)
 	void SetTurretReference(UTankTurret* turretToSet);
+
+	UFUNCTION(BlueprintCallable, Category = firing)
+	void Fire();
 
 protected:
 	UTankAimingComponent* tankAimingComponent = nullptr;
@@ -34,9 +38,23 @@ private:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	virtual void Tick(float DeltaTime) override;
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UPROPERTY(EditAnywhere, Category = Firing)
-	float projectileLaunchSpeed = 6000.0; //1000 m/s
+	UTankBarrel* barrel = nullptr;
+
+
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
+	float projectileLaunchSpeed = 6000.0; 
+
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
+	float reloadSpeed = 3.0f;
+
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	TSubclassOf<AProjectile> projectileBlueprint;
+
+	//set to more then reload speed to ba able to fire immediately
+	float timeSinceFiring = reloadSpeed + 1.0f;
 };
