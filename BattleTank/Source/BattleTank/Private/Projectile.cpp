@@ -14,7 +14,6 @@ AProjectile::AProjectile()
 
 void AProjectile::LaunchProjectile(float speed)
 {
-	UE_LOG(LogTemp, Warning, TEXT("FIRE zee missiles"));
 	movementComponent->SetVelocityInLocalSpace(FVector::ForwardVector * speed);
 	movementComponent->Activate();
 }

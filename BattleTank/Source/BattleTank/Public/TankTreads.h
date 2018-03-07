@@ -14,7 +14,13 @@ class BATTLETANK_API UTankTreads : public UStaticMeshComponent
 {
 	GENERATED_BODY()
 	
+public:
+	//sets throttle between -1 and +1
+	UFUNCTION(BlueprintCallable)
+	void SetThrottle(float throttle);
 	
-	
+	//Max force per tread in newtons
+	UPROPERTY(EditDefaultsOnly)
+	float TreadMaxDrivingForce = 400000;
 	
 };
