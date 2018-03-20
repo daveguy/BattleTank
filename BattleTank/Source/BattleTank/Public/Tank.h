@@ -22,16 +22,17 @@ public:
 
 	void AimAt(FVector AimLocation);
 
-	UFUNCTION(BlueprintCallable, Category = setup)
+	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void SetBarrelReference(UTankBarrel* barrelToSet);
 
-	UFUNCTION(BlueprintCallable, Category = setup)
+	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void SetTurretReference(UTankTurret* turretToSet);
 
-	UFUNCTION(BlueprintCallable, Category = firing)
+	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Fire();
 
 protected:
+	UPROPERTY(BlueprintReadOnly)
 	UTankAimingComponent* tankAimingComponent = nullptr;
 
 private:	
@@ -46,13 +47,13 @@ private:
 	UTankBarrel* barrel = nullptr;
 
 
-	UPROPERTY(EditDefaultsOnly, Category = Firing)
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float projectileLaunchSpeed = 6000.0; 
 
-	UPROPERTY(EditDefaultsOnly, Category = Firing)
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float reloadSpeed = 3.0f;
 
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile> projectileBlueprint;
 
 	//set to more then reload speed to ba able to fire immediately
